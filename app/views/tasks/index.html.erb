@@ -1,4 +1,10 @@
 <h1> To do: </h1>
+<h3> Add a task: </h3>
+<%= form_tag(new_list_task_path, method: "post")%>
+  <% text_field_tag :description %>
+  <%= submit_tag "Add Task" %>
+<% end %>
+
 
 <ul>
   <% @tasks.each do |task| %>
