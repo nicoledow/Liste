@@ -16,3 +16,7 @@
  .field_with_errors {
      border: 2px solid red;
  }
+
+ .error-explanations {
+     color: red;
+ }
