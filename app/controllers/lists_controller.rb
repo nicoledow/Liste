@@ -12,10 +12,23 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.create(list_params)
-    redirect_to list_path(@list)
+    @list = List.new(list_params)
+    @list.user_id = current_user.id
+    if @list.save
+      redirect_to list_path(@list)
+    else
+      flash[:error] = "An error occurred. Please try again."
+      render :new
+    end
   end
 
+  def edit
+    @list = List.find_by_id(params[:id])
+  end
+
+  def update
+
+  end
 
 
   private
