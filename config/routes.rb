@@ -7,5 +7,11 @@ Rails.application.routes.draw do
   
   resources :users, only: [:new, :create]
 
+  resources :lists, only: [:show, :index] do
+    resources :tasks, only: [:new, :create, :index]
+  end
+
   resources :lists
+
+  resources :tasks, only: [:index, :new, :create]
 end
