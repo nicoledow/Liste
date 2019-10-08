@@ -1,4 +1,10 @@
-<h1> To do: </h1>
+<% if @list %>
+  <h1> <%= @list.title %>
+<% else %>
+  <h1> To do: </h1>
+<% end %>
+
+
 <h4> Let's get to work... </h4>
 <%= form_tag("/lists/:list_id/tasks", method: "post") do %>
   <%= hidden_field_tag(:list_id) %>
