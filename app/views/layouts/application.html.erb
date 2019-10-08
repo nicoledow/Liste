@@ -10,6 +10,14 @@
   </head>
 
   <body>
+  <!-- configuration for flash messages: -->
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+    </div>
+    <!-- end config for flash messages -->
+    
     <%= yield %>
   </body>
 </html>
