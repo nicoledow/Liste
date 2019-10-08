@@ -1,1 +1,9 @@
-<p> lists index </p>
+<h1> Current Projects: </h1>
+<button> <%= link_to 'New List', new_list_path %> </button>
+
+<ul>
+  <% @lists.each do |list| %>
+     <li> <%= link_to 'list.title', list_path(list) %> </li>
+  <% end %>
+</ul>
+
