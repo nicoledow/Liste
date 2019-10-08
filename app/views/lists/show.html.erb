@@ -1,4 +1,5 @@
 <h1> <%= @list.title %> </h1>
-<% if @list.user_id == @current_user.id %>
+
+<% if @list.user_id == current_user.id %>
   <button> <%= link_to 'Edit Project', edit_list_path(@list) %> </button>
 <% end %>
