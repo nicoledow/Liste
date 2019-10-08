@@ -1,0 +1,7 @@
+<h1> Create a New Task </h1>
+
+<%= form_for @task do |f| %>
+  <%= f.text_field :description %> <br>
+  <%= f.label :list_id %>
+  <%= f.collection_select(:list_id, @lists, :id, :title)%>
+<% end %>

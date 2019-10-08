@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-    belongs_to :assignment
+    has_many :assignments
     belongs_to :list
     has_many :notes
 end
