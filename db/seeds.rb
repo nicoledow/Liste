@@ -14,3 +14,5 @@ end
         manager: true)
 end
 
+2.times do
+    Team.create()
