@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root to: 'application#home'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
+  #get '/auth/facebook', to: 'sessions#new'
+  get '/auth/facebook/callback', to: 'sessions#facebook_create'
   
   resources :users, only: [:new, :create]
 
