@@ -6,11 +6,22 @@
 
 
 <h4> Let's get to work... </h4>
-
+<!--
 <%= form_tag(list_tasks_path, method: "post") do %>
   <%= text_field_tag(:description) %>
   <%= submit_tag("Add Task") %>
 <% end %>
+-->
+<%= form_for @task do |f| %>
+  <%= f.text_field :description %> <br>
+  
+  <%= f.label :list_id %>
+  <%= f.collection_select(:list_id, @lists, :id, :title)%> <br>
+
+  <%= f.submit "Add Task" %>
+<% end %>
+
+
 
 <ul>
   <% @tasks.each do |task| %>

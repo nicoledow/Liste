@@ -7,6 +7,8 @@ class TasksController < ApplicationController
     else
       @tasks = Task.all
     end
+    @task = Task.new
+    @lists = List.all
   end
 
   def new
@@ -28,6 +30,6 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.permit(:description, :list_id)
+    params.require(:task).permit(:description, :list_id)
   end
 end
