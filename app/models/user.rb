@@ -3,8 +3,8 @@ class User < ApplicationRecord
 
     validates :name, presence: true
     validates :email, presence: true
-    validates :email, uniqueness: true
-    validates :password, length: { minimum: 5 }
+    validates :email, uniqueness: { message: "Email already in use."}
+    validates :password, length: { minimum: 5, message: "Password must be at least five characters." }
 
     has_many :assignments
     has_many :tasks, through: :assignments
