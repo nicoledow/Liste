@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  before_action :require_login 
 
   def create
     #binding.pry

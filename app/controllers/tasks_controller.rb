@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :require_login 
   
   def index
     if params[:list_id]
