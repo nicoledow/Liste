@@ -14,7 +14,15 @@ class AssignmentsController < ApplicationController
   end
 
   def create
-    raise params.inspect
+    assignment = Assignment.new(assignment_params)
+    if assignment.save
+      redirect_to list_tasks_path(assignment.task.list)
+    end
   end
 
+
+  private
+  def assignment_params
+    assignment_params = params.require(:assignment).permit(:user_id, :due_date, :task_id)
+  end
 end
