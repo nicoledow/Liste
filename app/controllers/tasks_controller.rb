@@ -10,6 +10,8 @@ class TasksController < ApplicationController
     end
     @task = Task.new
     @lists = List.all
+    @assignment = Assignment.new
+    @users = User.all
   end
 
   def new

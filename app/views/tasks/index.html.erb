@@ -22,7 +22,12 @@
   <% @tasks.each do |task| %>
     <li> <%= task.description %> 
     <% if current_user.manager? %>
-      <button> <%= link_to 'Assign Task', new_assignment_path %>  </button>
+      <%= form_for @assignment do |f| %>
+        <%= f.collection_select(:user_id, @users, :id, :name)%>
+        <%= f.text_field :due_date, value: "Due date"%>
+        <%= f.hidden_field :task_id, value: task.id %>
+        <%= f.submit "Assign Task" %>
+      <% end %>
     <% end %>
     </li>
   <% end %>
