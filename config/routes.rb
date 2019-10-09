@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   resources :lists
 
   resources :tasks, only: [:index, :new, :create]
+
+  resources :assignments, only: [:index]
 end
