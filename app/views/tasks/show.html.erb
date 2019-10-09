@@ -1,0 +1,14 @@
+<h2> Task: </h2> <%= @task.description %>
+<h3> Project: </h3> <%= @task.list.title %>
+
+<% if @task.assigned? %>
+  <h4> Assigned to: </h4> <%= @person.name %>
+<% else %>
+  <h4> Assign to: </h4>
+  <%= form_for @assignment do |f| %>
+    <%= f.collection_select(:user_id, @users, :id, :name)%>
+    <%= f.text_field :due_date, value: "Due date"%>
+    <%= f.hidden_field :task_id, value: task.id %>
+    <%= f.submit "Assign Task" %>
+    <% end %>
+<% end %>

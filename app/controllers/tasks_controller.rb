@@ -16,6 +16,11 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find_by_id(params[:id])
+    @users = User.all
+    if @task.assigned?
+      assignment = Assignment.find_by(task_id: @task.id)
+      @person = assignment.user
+    end
   end
 
   def new
