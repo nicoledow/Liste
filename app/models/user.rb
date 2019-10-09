@@ -12,4 +12,17 @@ class User < ApplicationRecord
     def manager?
         self.manager == true
     end
+
+    def self.create_with_omniauth(auth)
+      user = User.find_or_create_by(uid: auth['uid'])
+      user.email = auth['info']['email']
+      user.password = auth['uid']
+      user.name = auth['info']['name']
+      if User.exists?(user.id)
+        user
+      else
+        user.save!
+        user
+      end
+    end
 end
