@@ -6,12 +6,7 @@
 
 
 <h4> Let's get to work... </h4>
-<!--
-<%= form_tag(list_tasks_path, method: "post") do %>
-  <%= text_field_tag(:description) %>
-  <%= submit_tag("Add Task") %>
-<% end %>
--->
+
 <%= form_for @task do |f| %>
   <%= f.text_field :description %> <br>
   
@@ -25,6 +20,10 @@
 
 <ul>
   <% @tasks.each do |task| %>
-    <li> <%= task.description %> </li>
+    <li> <%= task.description %> 
+    <% if current_user.manager? %>
+      <button> <%= link_to 'Assign Task', new_assignment_path %>  </button>
+    <% end %>
+    </li>
   <% end %>
 </ul>

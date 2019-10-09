@@ -9,4 +9,12 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.find_by_id(params[:id])
   end
 
+  def new
+    @assignment = Assignment.new
+  end
+
+  def create
+    raise params.inspect
+  end
+
 end
