@@ -15,5 +15,5 @@ Rails.application.routes.draw do
 
   resources :tasks, only: [:index, :new, :create]
 
-  resources :assignments, only: [:index]
+  resources :assignments, only: [:index, :show]
 end

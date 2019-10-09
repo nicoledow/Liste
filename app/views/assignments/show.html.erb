@@ -1,0 +1,16 @@
+<h1> Assignment Details </h1>
+
+<h3> Task: </h3> <p> <%= @assignment.task.description %> </p> <br>
+<h3> Assigned to: </h3> <p> <%= @assignment.user.name %> </p> <br>
+<h3> Due: </h3> <p> <%= @assignment.due_date %> </p> <br>
+
+<h3> Notes: </h3>
+
+
+<% if @assignment.task.notes.any? %>
+  <ul>
+    <% @assignment.task.notes.each do |note| %>
+      <li> <%= note.content %> </li>
+    <% end %>
+  </ul>
+<% end %>
