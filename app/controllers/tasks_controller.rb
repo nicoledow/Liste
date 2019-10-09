@@ -14,6 +14,10 @@ class TasksController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @task = Task.find_by_id(params[:id])
+  end
+
   def new
     @task = Task.new
     @lists = List.all
