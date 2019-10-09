@@ -10,6 +10,12 @@
   </head>
 
   <body>
+  <div class="navbar">
+    <%= link_to 'Projects', lists_path %>
+    <%= link_to 'Assignments', assignments_path %>
+    <%= link_to 'Teammates', users_path %>
+    <%= link_to 'Log Out', '/logout' %>
+  </div>
   <!-- configuration for flash messages: -->
     <div class="container">
       <% flash.each do |key, value| %>
@@ -17,6 +23,7 @@
       <% end %>
     </div>
     <!-- end config for flash messages -->
+  
     
     <%= yield %>
   </body>
