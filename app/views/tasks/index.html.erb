@@ -10,8 +10,12 @@
 <%= form_for @task do |f| %>
   <%= f.text_field :description %> <br>
   
-  <%= f.label :list_id %>
-  <%= f.collection_select(:list_id, @lists, :id, :title)%> <br>
+  <% if !@list %>
+    <%= f.label :list_id %>
+    <%= f.collection_select(:list_id, @lists, :id, :title) %> <br>
+  <% else %>
+    <%= f.hidden_field :list_id, value: @list.id%>
+  <% end %>
 
   <%= f.submit "Add Task" %>
 <% end %>
