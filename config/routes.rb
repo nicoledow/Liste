@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :lists
 
   resources :tasks
+  get '/mytasks', to: 'tasks#mine'
 
   resources :assignments, only: [:index, :show, :new, :create]
 

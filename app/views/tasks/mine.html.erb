@@ -1,0 +1,23 @@
+<h1> My Tasks </h1>
+
+<h2> To do: </h2>
+
+<ul>
+  <% @my_tasks.each do |assignment| %>
+    <% if !assignment.task.completed %>
+      <li> <%= link_to assignment.task.description, task_path(assignment.task) %> - due <%= assignment.due_date %> </li>
+    <% end %>
+  <% end %>
+</ul>
+
+
+
+<h2> Done: </h2>
+
+<ul>
+  <% @my_tasks.each do |assignment| %>
+    <% if assignment.task.completed %>
+      <li> <%= link_to assignment.task.description, task_path(assignment.task) %> </li>
+    <% end %>
+  <% end %>
+</ul>

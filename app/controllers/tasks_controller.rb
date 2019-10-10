@@ -61,6 +61,11 @@ class TasksController < ApplicationController
     redirect_to list_tasks_path(list)
   end
 
+  def mine
+    @current_user = current_user
+    @my_tasks = Assignment.all.select {|a| a.user_id == @current_user.id}
+  end
+
 
   private
   def task_params
