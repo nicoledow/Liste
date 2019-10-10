@@ -1,18 +1,20 @@
 class ListsController < ApplicationController
   before_action :require_login 
   
+  def new
+    @list = List.new
+  end
+  
   def index
     @lists = List.all
     @new_list = List.new
   end
 
+
   def show
     @list = List.find_by_id(params[:id])
   end
 
-  def new
-    @list = List.new
-  end
 
   def create
     @list = List.new(list_params)

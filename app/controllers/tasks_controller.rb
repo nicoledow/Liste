@@ -5,7 +5,8 @@ class TasksController < ApplicationController
   
   def index
     if params[:list_id]
-      @tasks = List.find(params[:list_id]).tasks.incomplete
+      #@tasks = List.find(params[:list_id]).tasks.incomplete
+      @tasks = List.find(params[:list_id]).tasks.incomplete.order("created_at DESC").all
       @list = List.find(params[:list_id])
     else
       @tasks = Task.incomplete
