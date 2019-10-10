@@ -3,10 +3,10 @@ class TasksController < ApplicationController
   
   def index
     if params[:list_id]
-      @tasks = List.find(params[:list_id]).tasks
+      @tasks = List.find(params[:list_id]).tasks.incomplete
       @list = List.find(params[:list_id])
     else
-      @tasks = Task.all
+      @tasks = Task.incomplete
     end
     @task = Task.new
     @lists = List.all
