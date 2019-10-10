@@ -19,6 +19,7 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find_by_id(params[:id])
+    @new_task = Task.new
     @users = User.all
     if @task.assigned?
       assignment = Assignment.find_by(task_id: @task.id)

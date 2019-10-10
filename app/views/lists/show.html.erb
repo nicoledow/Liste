@@ -3,3 +3,16 @@
 <% if @list.user_id == session[:user_id] %>
   <button> <%= link_to 'Edit Project', edit_list_path(@list) %> </button>
 <% end %>
+
+<!--
+<%= form_tag(list_tasks_path(@list), method: "post") do %>
+  <%= hidden_field_tag :list_id, @list.id %>
+  <%= text_field_tag :description %>
+<% end %>
+-->
+
+<%= form_for(@task) do |f| %>
+  <%= f.hidden_field :list_id, value: @list.id %>
+  <%= f.text_field :description %>
+  <%= f.submit %>
+<% end %>
