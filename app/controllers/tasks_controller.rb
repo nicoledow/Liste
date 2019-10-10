@@ -12,6 +12,7 @@ class TasksController < ApplicationController
     @lists = List.all
     @assignment = Assignment.new
     @users = User.all
+    @current_user = current_user
   end
 
   def show
@@ -41,6 +42,10 @@ class TasksController < ApplicationController
 
   def completed
     @tasks = Task.find_by(list_id: params[:list_id]).completed
+  end
+
+  def destroy
+    binding.pry
   end
 
 

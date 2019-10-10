@@ -11,13 +11,13 @@ Rails.application.routes.draw do
   end
 
   resources :lists, only: [:show, :index] do
-    resources :tasks, only: [:new, :create, :index]
+    resources :tasks, only: [:new, :create, :index, :destroy]
     get '/completed', to: 'tasks#completed'
   end
 
   resources :lists
 
-  resources :tasks, only: [:index, :new, :create, :show]
+  resources :tasks, only: [:index, :new, :create, :show, :destroy]
 
   resources :assignments, only: [:index, :show, :new, :create]
 

@@ -9,4 +9,8 @@ class Task < ApplicationRecord
     def assigned?
       Assignment.find_by(task_id: self.id) ? true : false
     end
+
+    def is_assigned_to?(user)
+      user.assignments.find_by(user_id: user.id) ? true : false
+    end
 end

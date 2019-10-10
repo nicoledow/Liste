@@ -21,7 +21,15 @@
 <ul>
   <% @tasks.each do |task| %>
     <li>
-      <%= task.description %> <button> <%= link_to 'Details', task_path(task) %> </button>
+      <%= link_to task.description, task_path(task) %>
+
+      <% if task.is_assigned_to?(@current_user) %>
+      <button>
+        <%= form_tag(task_path(task), method: :delete)%>
+        <%= submit_tag "Done"%>
+      </button>
+      <% end %>
+
       <% if current_user.manager? %>
         <% if !task.assigned? %>
           <%= form_for @assignment do |f| %>
@@ -32,6 +40,7 @@
           <% end %>
         <% end %>
       <% end %>
+
     </li>
   <% end %>
 </ul>
