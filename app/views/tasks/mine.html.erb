@@ -5,7 +5,11 @@
 <ul>
   <% @my_tasks.each do |assignment| %>
     <% if !assignment.task.completed %>
-      <li> <%= link_to assignment.task.description, task_path(assignment.task) %> - due <%= assignment.due_date %> </li>
+      <li> 
+        <%= link_to assignment.task.description, task_path(assignment.task) %> - due <%= assignment.due_date %> 
+        <!-- button to mark task complete: -->
+        <button> <%= link_to "Done", task_path(assignment.task), :method => :patch %> </button>
+      </li>
     <% end %>
   <% end %>
 </ul>
