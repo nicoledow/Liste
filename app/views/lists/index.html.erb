@@ -1,5 +1,9 @@
 <h1> Current Projects: </h1>
-<button> <%= link_to 'New List', new_list_path %> </button>
+
+<%= form_for @new_list do |f| %>
+  <%= f.text_field :title %>
+  <%= f.submit %>
+<% end %>
 
 <ul>
   <% @lists.each do |list| %>

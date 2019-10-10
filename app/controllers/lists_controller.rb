@@ -3,6 +3,7 @@ class ListsController < ApplicationController
   
   def index
     @lists = List.all
+    @new_list = List.new
   end
 
   def show
