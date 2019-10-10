@@ -39,6 +39,10 @@ class TasksController < ApplicationController
     end
   end
 
+  def completed
+    @tasks = Task.find_by(list_id: params[:list_id]).completed
+  end
+
 
   private
   def task_params

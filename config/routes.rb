@@ -5,12 +5,14 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   get '/auth/facebook/callback', to: 'sessions#create'
   
+  
   resources :users, only: [:new, :create, :index] do
     resources :assignments, only: [:index]
   end
 
   resources :lists, only: [:show, :index] do
     resources :tasks, only: [:new, :create, :index]
+    get '/completed', to: 'tasks#completed'
   end
 
   resources :lists

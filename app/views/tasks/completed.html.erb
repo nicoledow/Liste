@@ -1,0 +1,12 @@
+<h1> Completed Tasks </h1>
+
+<% if @tasks %>
+<ul>
+    <% @tasks.each do |task| %>
+      <li> <%= task.description %> - completed by <%= task.assignments.first.user.name %>
+      <button> <%= link_to 'Details', task_path(task) %> </button> </li>
+    <% end %>
+</ul>
+<% else %>
+  <h4> No completed tasks yet! </h4>
+<% end %>
