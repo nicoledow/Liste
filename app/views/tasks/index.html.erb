@@ -1,11 +1,9 @@
 <% if @list %>
   <h1> <%= @list.title %>
 <% else %>
-  <h1> To do: </h1>
+  <h1> Current tasks: </h1>
 <% end %>
 
-
-<h4> Let's get to work... </h4>
 
 <%= form_for @task do |f| %>
   <%= f.text_field :description %> <br>
