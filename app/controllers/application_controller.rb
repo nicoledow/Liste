@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
     helper_method :current_user
     helper_method :logged_in?
     helper_method :require_login
+    helper_method :find_task
     
     def home
     end
@@ -21,5 +22,9 @@ class ApplicationController < ActionController::Base
         flash[:login_required] = "Log in required." 
         redirect_to root_path
       end
+    end
+
+    def find_task
+      @task = Task.find_by_id(params[:id])
     end
 end

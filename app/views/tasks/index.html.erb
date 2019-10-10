@@ -25,11 +25,7 @@
 
 <!-- if the current user is assigned this task, they can mark it complete -->
       <% if task.is_assigned_to?(@current_user) %>
-      <button>
-        <!--<%= form_tag(task_path(task), method: :patch)%>
-        <%= submit_tag "Done"%>-->
-        <%= link_to "Done", task_path(task), :method => :patch %>
-      </button>
+        <button> <%= link_to "Done", task_path(task), :method => :patch %> </button>
       <% end %>
 
 <!-- if user is a manager, they can assign the task to another user: -->
@@ -42,10 +38,10 @@
             <%= f.submit "Assign Task" %>
           <% end %>
         <% end %>
-        
-
+<!-- if current user is manager, they can delete the task -->
+          <button> <%= link_to "Delete Task", task_path(task), :method => :delete %> </button>
       <% end %>
-
+      
     </li>
   <% end %>
 </ul>

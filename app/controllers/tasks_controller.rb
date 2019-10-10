@@ -1,5 +1,7 @@
 class TasksController < ApplicationController
   before_action :require_login 
+  before_action :find_task
+  skip_before_action :find_task, only: [:index, :new, :create]
   
   def index
     if params[:list_id]
@@ -45,15 +47,18 @@ class TasksController < ApplicationController
   end
 
   def update
-    task = Task.find_by_id(params[:id])
-    task.update(completed: true)
-    task.save
+    @task = Task.find_by_id(params[:id])
+    @task.update(completed: true)
+    @task.save
     flash[:completed] = "Task complete!"
-    redirect_to list_tasks_path(task.list)
+    redirect_to list_tasks_path(@task.list)
   end
 
   def destroy
-    #binding.pry
+    @task = Task.find_by_id(params[:id])
+    list = @task.list
+    @task.destroy
+    redirect_to list_tasks_path(list)
   end
 
 
