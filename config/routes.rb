@@ -12,10 +12,10 @@ Rails.application.routes.draw do
 
   resources :lists, only: [:show, :index] do
     resources :tasks, only: [:new, :create, :index, :destroy, :edit, :update]
-    get '/complete', to: 'tasks#completed'
   end
 
   resources :lists
+  post '/lists/:id/complete', to: 'lists#mark_complete', as: "list_complete"
 
   resources :tasks 
   get '/mytasks', to: 'tasks#mine'

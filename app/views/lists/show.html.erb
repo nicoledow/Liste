@@ -3,6 +3,7 @@
 <% if @list.user_id == @current_user.id || @current_user.manager? %>
   <button> <%= link_to 'Edit Project', edit_list_path(@list) %> </button>
   <button> <%= link_to 'Delete',url_for(action: :destroy, id: @list.id),method: :delete, data: {confirm: "Are you sure you want to delete this project?"} %> </button>
+  <button> <%= link_to 'Project Finished', list_complete_path(@list), method: :post %> </button> 
 <% end %>
 
 <%= form_for(@task) do |f| %>

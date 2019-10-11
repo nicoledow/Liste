@@ -1,5 +1,8 @@
 <% if @list %>
   <h1> <%= @list.title %>
+  <% if @current_user.manager? %>
+    <button> <%= link_to 'Project Finished', list_complete_path(@list), method: :post %> </button>
+  <% end %>
 <% else %>
   <h1> Current tasks: </h1>
 <% end %>

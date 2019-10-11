@@ -6,7 +6,8 @@ class ListsController < ApplicationController
   end
   
   def index
-    @lists = List.all
+    @lists = List.incomplete.order("created_at DESC").all
+    @completed_lists = List.completed.order("created_at DESC").all
     @new_list = List.new
     @current_user = current_user
   end
@@ -38,6 +39,14 @@ class ListsController < ApplicationController
     @list = List.find_by_id(params[:id])
     @list.update(list_params)
     redirect_to list_path(@list)
+  end
+
+  def mark_complete
+    list = List.find_by_id(params[:id])
+    list.completed = true
+    list.completed_at = Time.now
+    list.save
+    redirect_to lists_path
   end
 
   def destroy
