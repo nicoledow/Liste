@@ -1,8 +1,19 @@
-<h1> Your teammates: </h1>
-<p> (Click to see their current assignments) </p>
-
-<ul>
-  <% @users.each do |user| %>
-    <li> <%= link_to user.name, user_assignments_path(user) %> </li>
-  <% end %>
-</ul>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h1 class="card-title text-center">Your Teammates</h1>
+            <h3 class="card-title text-center"> Click to see what they're working on: </h3>
+          </div>
+          <div class="text-center">
+            <ul>
+              <% @users.each do |user| %>
+                <li> <%= link_to user.name, user_assignments_path(user) %> </li>
+              <% end %>
+            </ul>
+          </div>  
+        <br>
+        </div>
+    </div>
+</div>
