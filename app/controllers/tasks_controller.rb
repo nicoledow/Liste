@@ -64,6 +64,14 @@ class TasksController < ApplicationController
     redirect_to list_tasks_path(list)
   end
 
+  def mark_complete
+    task = Task.find_by_id(params[:id])
+    task.completed = true
+    task.save
+    flash[:completed] = "Task complete!"
+    redirect_to list_tasks_path(task.list)
+  end
+
   def mine
     @current_user = current_user
     @my_tasks = Assignment.all.select {|a| a.user_id == @current_user.id}

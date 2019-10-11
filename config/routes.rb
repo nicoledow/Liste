@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :tasks 
   get '/mytasks', to: 'tasks#mine'
+  post '/task/:id/complete', to: 'tasks#mark_complete', as: "task_complete"
 
   resources :assignments, only: [:index, :show, :new, :create]
 
