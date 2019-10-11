@@ -21,6 +21,7 @@ class TasksController < ApplicationController
     @task = Task.find_by_id(params[:id])
     @new_task = Task.new
     @users = User.all
+    @assignment = Assignment.new
     if @task.assigned?
       assignment = Assignment.find_by(task_id: @task.id)
       @person = assignment.user
