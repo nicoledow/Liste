@@ -8,6 +8,10 @@ $color-1: #f0efef;
 $color-2: #ddeedd;
 $color-3: #c2d4dd;
 $color-4: #b0aac0;
+$color-5: #3b3a30;
+
+/* $font-1: font-family: 'Amatic SC', cursive;
+$font-2: font-family: 'Josefin Slab', serif; */
 
 @import "bootstrap";
 
@@ -18,6 +22,18 @@ $color-4: #b0aac0;
 
  body {
      background: $color-1;
+     font-family: 'Advent Pro';font-size: 22px;
+ }
+
+ h1 {
+    color: $color-5;
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
+ }
+
+ h2, h3, h4 {
+    color: $color-5;
+    font-family: 'Amatic SC', cursive;
  }
 
  .navbar {
@@ -27,7 +43,7 @@ $color-4: #b0aac0;
  .navbar__link:hover {
     background: $color-2;
     color: $color-4;
-
+    text-decoration: none;
  }
 
 
