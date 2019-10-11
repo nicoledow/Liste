@@ -22,6 +22,7 @@ class TasksController < ApplicationController
     @new_task = Task.new
     @users = User.all
     @assignment = Assignment.new
+    @new_note = Note.new
     if @task.assigned?
       assignment = Assignment.find_by(task_id: @task.id)
       @person = assignment.user
@@ -46,11 +47,6 @@ class TasksController < ApplicationController
 
   def completed
     @tasks = Task.find_by(list_id: params[:list_id]).completed
-  end
-
-  def edit
-    @assignment = Assignment.find_by(task_id: params[:id])
-    @users = User.all
   end
 
   def update

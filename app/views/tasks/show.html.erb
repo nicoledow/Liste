@@ -17,11 +17,8 @@
 <button> <%= link_to 'Edit', edit_task_path(@task) %>  </button>
 
 <h3> Add a note: </h3>
-
-<!--
-<%= form_tag(notes_path, method: :post) %>
-  <%= hidden_field_tag :task_id, @task.id %>
-  <%= text_field_tag :content %>
-  <%= submit_tag "Add Note" %>
+<%= form_for @new_note do |f| %>
+  <%= f.hidden_field :task_id, value: @task.id %>
+  <%= f.text_field :content %>
+  <%= f.submit "Add Note"%>
 <% end %>
--->
