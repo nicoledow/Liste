@@ -1,3 +1,14 @@
-<h1> Edit project: </h1>
-
-<%= render partial: "form", locals: { list: @list } %>
+<<div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h1 class="card-title text-center">Edit Project </h1>
+          </div>
+          <div class="text-center">
+            <%= render partial: "form", locals: { list: @list } %>
+          </div>
+          <br>
+        </div>
+    </div>
+</div>
