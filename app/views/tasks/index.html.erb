@@ -47,3 +47,12 @@
     </li>
   <% end %>
 </ul>
+
+<% if params[:list_id] %>
+<h2> Completed Tasks: </h2>
+<ul>
+  <% @completed_list_tasks.each do |task| %>
+    <li> <%= task.description%> - Completed on <%= task.updated_at.strftime("%d%m%Y%") %> </li>
+  <% end %>
+</ul>
+<% end %>

@@ -10,6 +10,7 @@ class TasksController < ApplicationController
     else
       @tasks = Task.incomplete
     end
+    @completed_list_tasks = List.find(params[:list_id]).tasks.completed.order("created_at DESC").all
     @task = Task.new
     @lists = List.all
     @assignment = Assignment.new
