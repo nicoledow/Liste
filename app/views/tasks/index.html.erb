@@ -26,13 +26,6 @@
     <li>
       <%= link_to task.description, task_path(task) %>
 
-<!-- if the current user is assigned this task, or if they are a manager, they can mark it complete -->
-  <% if @current_user %>
-    <% if @current_user.manager? || task.is_assigned_to?(@current_user) %>
-      <button class="btn btn-success"> <%= link_to 'Done', task_complete_path(task), method: :post %> </button>
-    <% end %>
-  <% end %>
-
 <!-- if user is a manager, they can assign the task to another user: -->
       <% if current_user.manager? %>
         <% if !task.assigned? %>
@@ -46,6 +39,11 @@
 <!-- if current user is manager, they can delete the task -->
           <button class="btn btn-danger"> <%= link_to "Delete Task", task_path(task), :method => :delete %> </button>
       <% end %>
+      
+  <!-- if the current user is assigned this task, or if they are a manager, they can mark it complete -->
+  <% if @current_user.manager? || task.is_assigned_to?(@current_user) %>
+    <button class="btn btn-success"> <%= link_to 'Done', task_complete_path(task), method: :post %> </button>
+  <% end %>
       
     </li>
   <% end %>
