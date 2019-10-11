@@ -15,7 +15,10 @@
 
             <ul>
               <% @assignments.each do |assignment| %>
-                <li> <%= link_to assignment.task.description, task_path(assignment.task) %> -  <%= assignment.user.name %> (<%= assignment.task.list.title%>)</li>
+                <li>
+                  <%= assignment.task.description %>
+                  -  <%= assignment.user.name %> (<%= assignment.task.list.title%>)
+                  </li>
               <% end %>
             </ul>
           </div>  
