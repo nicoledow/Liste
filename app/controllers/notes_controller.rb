@@ -5,6 +5,7 @@ class NotesController < ApplicationController
     #binding.pry
     note = Note.new(note_params)
     task = Task.find_by_id(note_params[:task_id])
+    note.user_id = current_user.id
     if note.save 
       flash[:success] = "Note added"
       redirect_to task_path(task)
