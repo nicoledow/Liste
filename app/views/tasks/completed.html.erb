@@ -4,7 +4,7 @@
 <ul>
     <% @tasks.each do |task| %>
       <li> <%= task.description %> - completed by <%= task.assignments.first.user.name %>
-      <button> <%= link_to 'Details', task_path(task) %> </button> </li>
+      <button class="btn btn-secondary"> <%= link_to 'Details', task_path(task) %> </button> </li>
     <% end %>
 </ul>
 <% else %>

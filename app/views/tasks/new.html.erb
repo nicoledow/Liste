@@ -6,5 +6,5 @@
   <%= f.label :list_id %>
   <%= f.collection_select(:list_id, @lists, :id, :title)%> <br>
 
-  <%= f.submit "Add Task" %>
+  <%= f.submit "Add Task", class: "btn btn-primary" %>
 <% end %>

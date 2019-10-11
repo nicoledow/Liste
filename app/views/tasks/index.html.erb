@@ -1,7 +1,7 @@
 <% if @list %>
   <h1> <%= @list.title %>
   <% if @current_user.manager? %>
-    <button> <%= link_to 'Project Finished', list_complete_path(@list), method: :post %> </button>
+    <button class="btn btn-success"> <%= link_to 'Project Finished', list_complete_path(@list), method: :post %> </button>
   <% end %>
 <% else %>
   <h1> Current tasks: </h1>
@@ -18,7 +18,7 @@
     <%= f.collection_select(:list_id, @lists, :id, :title) %> <br>
   <% end %>
 
-  <%= f.submit "Add Task" %>
+  <%= f.submit "Add Task", class: "btn btn-primary"%>
 <% end %>
 
 <ul>
@@ -29,7 +29,7 @@
 <!-- if the current user is assigned this task, or if they are a manager, they can mark it complete -->
   <% if @current_user %>
     <% if @current_user.manager? || task.is_assigned_to?(@current_user) %>
-      <button> <%= link_to 'Done', task_complete_path(task), method: :post %> </button>
+      <button class="btn btn-success"> <%= link_to 'Done', task_complete_path(task), method: :post %> </button>
     <% end %>
   <% end %>
 
@@ -40,11 +40,11 @@
             <%= f.collection_select(:user_id, @users, :id, :name)%>
             <%= f.text_field :due_date, value: "Due date"%>
             <%= f.hidden_field :task_id, value: task.id %>
-            <%= f.submit "Assign Task" %>
+            <%= f.submit "Assign Task", class: "btn btn-secondary" %>
           <% end %>
         <% end %>
 <!-- if current user is manager, they can delete the task -->
-          <button> <%= link_to "Delete Task", task_path(task), :method => :delete %> </button>
+          <button class="btn btn-danger"> <%= link_to "Delete Task", task_path(task), :method => :delete %> </button>
       <% end %>
       
     </li>

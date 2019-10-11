@@ -7,7 +7,7 @@
   <%= label_tag(:password, "Password") %>
   <%= password_field_tag(:password) %> <br>
 
-  <%= submit_tag("Log In") %>
+  <%= submit_tag("Log In") class: "btn btn-primary"%>
 <% end %>
 
-<%= link_to 'Log In With Facebook', '/auth/facebook' %>
+<button class="btn btn-primary"><%= link_to 'Log In With Facebook', '/auth/facebook' %></button>

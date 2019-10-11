@@ -7,10 +7,10 @@
 
 <ul>
   <% @lists.each do |list| %>
-     <li> <%= link_to list.title, list_path(list) %> <button><%= link_to 'See Tasks', list_tasks_path(list) %> </button>
+     <li> <%= link_to list.title, list_path(list) %> <button class="btn btn-secondary"><%= link_to 'See Tasks', list_tasks_path(list) %> </button>
        <% if @current_user.manager? %>
-         <button> <%= link_to 'Done', list_complete_path(list), method: :post %> </button>
-         <button> <%= link_to 'Delete',url_for(action: :destroy, id: list.id),method: :delete, data: {confirm: "Are you sure you want to delete this project?"} %> </button>
+         <button class="btn btn-success"> <%= link_to 'Done', list_complete_path(list), method: :post %> </button>
+         <button class="btn btn-danger"> <%= link_to 'Delete',url_for(action: :destroy, id: list.id),method: :delete, data: {confirm: "Are you sure you want to delete this project?"} %> </button>
        <% end %>
      </li>
   <% end %>

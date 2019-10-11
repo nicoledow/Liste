@@ -8,7 +8,7 @@
 <%= form_tag('/notes', method: "post") do %>
   <%= hidden_field_tag(:task_id, @assignment.task_id) %>
   <%= text_field_tag(:content)%>
-  <%= submit_tag("Add Note to Task")%>
+  <%= submit_tag("Add Note to Task") class: "btn btn-primary"%>
 <% end %>
 
 <% if @assignment.task.notes.any? %>
