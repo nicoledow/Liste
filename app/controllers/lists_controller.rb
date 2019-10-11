@@ -8,12 +8,14 @@ class ListsController < ApplicationController
   def index
     @lists = List.all
     @new_list = List.new
+    @current_user = current_user
   end
 
 
   def show
     @list = List.find_by_id(params[:id])
     @task = Task.new
+    @current_user = current_user
   end
 
 
@@ -36,6 +38,12 @@ class ListsController < ApplicationController
     @list = List.find_by_id(params[:id])
     @list.update(list_params)
     redirect_to list_path(@list)
+  end
+
+  def destroy
+    list = List.find_by_id(params[:id])
+    list.destroy
+    redirect_to lists_path
   end
 
 
