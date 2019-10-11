@@ -21,7 +21,11 @@
 <ul>
   <% @my_tasks.each do |assignment| %>
     <% if assignment.task.completed %>
-      <li> <%= link_to assignment.task.description, task_path(assignment.task) %> - <%= assignment.completed_at unless assignment.completed_at == nil %></li>
+      <li> <%= link_to assignment.task.description, task_path(assignment.task) %> 
+        <% if assignment.task.completed_at != nil %>
+          <p> - Completed at: <%= assignment.task.completed_at %> </p>
+        <% end %>
+      </li>
     <% end %>
   <% end %>
 </ul>

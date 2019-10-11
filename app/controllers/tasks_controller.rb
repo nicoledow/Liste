@@ -53,9 +53,13 @@ class TasksController < ApplicationController
   def update
     @task = Task.find_by_id(params[:id])
     @task.update(task_params)
-    @task.save
-    flash[:completed] = "Task updated."
-    redirect_to list_tasks_path(@task.list)
+    if @task.save
+      flash[:updated] = "Task updated."
+      redirect_to list_tasks_path(@task.list)
+    else
+      flash[:error] = "An error occurred. Please try again."
+      redirect_to task_path(@task)
+    end
   end
 
   def destroy
@@ -68,6 +72,7 @@ class TasksController < ApplicationController
   def mark_complete
     task = Task.find_by_id(params[:id])
     task.completed = true
+    task.completed_at = Time.now
     task.save
     flash[:completed] = "Task complete!"
     redirect_to list_tasks_path(task.list)
@@ -81,6 +86,6 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:description, :list_id)
+    params.permit(:description, :list_id)
   end
 end

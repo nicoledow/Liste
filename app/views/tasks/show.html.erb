@@ -1,4 +1,7 @@
 <h2> Task: </h2> <%= @task.description %>
+<% if @task.completed_at != nil %>
+  <p> Completed at: <%= @task.completed_at %> </p>
+<% end %>
 <h3> Project: </h3> <%= @task.list.title %>
 
 <% if @task.assigned? %>
