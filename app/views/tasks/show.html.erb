@@ -17,7 +17,11 @@
 <button> <%= link_to 'Edit', edit_task_path(@task) %>  </button>
 
 <!-- if user is manager or owns the task, button to mark it complete: -->
-<button> <%= link_to 'Finished', task_complete_path(@task), method: :post %> </button>
+<% if @current_user %>
+  <% if @current_user.manager || @task.is_assigned_to?(@current_user) %>
+  <button> <%= link_to 'Finished', task_complete_path(@task), method: :post %> </button>
+  <% end %>
+<% end %>
 
 <h3> Notes: </h3>
 <%= form_for @new_note do |f| %>
