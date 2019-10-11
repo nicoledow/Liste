@@ -19,7 +19,7 @@
 <!-- if user is manager or owns the task, button to mark it complete: -->
 <% if @current_user %>
   <% if @current_user.manager? || @task.is_assigned_to?(@current_user) %>
-  <button> <%= link_to 'Finished', task_complete_path(@task), method: :post %> </button>
+  <button> <%= link_to 'Done', task_complete_path(@task), method: :post %> </button>
   <% end %>
 <% end %>
 
