@@ -17,6 +17,11 @@
  /* Custom bootstrap variables must be set or imported *before* bootstrap. */
 @import "bootstrap";
 
+$color-1: #f0efef; 
+$color-2: #ddeedd;
+$color-3: #c2d4dd;
+$color-4: #b0aac0;
+
  .field_with_errors {
      border: 2px solid red;
  }
@@ -26,5 +31,10 @@
  }
 
  body {
-     background-color: green;
+     background:
  }
+
+ .navbar {
+     background: 
+ }
+ 
