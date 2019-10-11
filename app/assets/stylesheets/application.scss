@@ -39,26 +39,12 @@ $font-2: font-family: 'Josefin Slab', serif; */
  li {
      color: $color-5;
  }
-  
-.button__facebook {
-    background-color: #4C69BA;
-    background-image: linear-gradient(#4C69BA, #3B55A0);
-    font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;
-    text-shadow: 0 -1px 0 #354C8C;
-    box-sizing: border-box;
-    position: relative;
-    width: 13em;  /* remove to not have fixed size */
-    margin: 0.2em;
-    padding: 0px 15px 0 46px;
-    border: none;
-    text-align: left;
-    line-height: 34px;
-    white-space: nowrap;
-    border-radius: 0.2em;
-    font-size: 16px;
-    color: #FFF;
-}
 
+ button {
+     padding: 5px;
+     margin: 5px;
+ }
+  
  .navbar {
      background: $color-3;
      font-family: 'Amatic SC', cursive;

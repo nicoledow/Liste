@@ -1,14 +1,33 @@
-<h1> Sign In: </h1>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h1>Sign In</h1>
+            <div class="form-signin">
+            <%= form_tag("/login", method: "post") do %>
+              <div class="form-label-grou">
+              <%= label_tag(:email, "Email") %>
+              <%= text_field_tag(:email) %> <br>
+              </div>
 
-<%= form_tag("/login", method: "post") do %>
-  <%= label_tag(:email, "Email") %>
-  <%= text_field_tag(:email) %> <br>
-
-  <%= label_tag(:password, "Password") %>
-  <%= password_field_tag(:password) %> <br>
-
-  <%= submit_tag("Log In", class: "btn btn-primary")%>
-<% end %>
-
-<%= link_to 'Log In With Facebook', '/auth/facebook', class: "button__facebook" %>
+              <div class="form-label-group">
+              <%= label_tag(:password, "Password") %>
+              <%= password_field_tag(:password) %> <br>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase">
+              <%= submit_tag("Log In", class: "btn btn-primary")%>
+              </button>
+           <% end %>
+           <button class="btn btn-lg btn-primary btn-block text-uppercase">
+           <%= link_to 'Log In With Facebook', '/auth/facebook', class: "btn btn-primary" %> 
+           </button>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
 
