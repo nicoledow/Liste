@@ -52,9 +52,9 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find_by_id(params[:id])
-    @task.update(completed: true)
+    @task.update(task_params)
     @task.save
-    flash[:completed] = "Task complete!"
+    flash[:completed] = "Task updated."
     redirect_to list_tasks_path(@task.list)
   end
 
