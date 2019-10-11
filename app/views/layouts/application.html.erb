@@ -11,14 +11,14 @@
 
   <body>
   <div class="navbar">
-    <%= link_to 'Projects', lists_path %>
-    <%= link_to 'My Tasks', '/mytasks' %>
-    <%= link_to 'Assignments', assignments_path %>
-    <%= link_to 'Teammates', users_path %>
-    <%= link_to 'Log Out', '/logout' %>
+    <%= link_to 'Projects', lists_path, class: "navbar__link"%>
+    <%= link_to 'My Tasks', '/mytasks', class: "navbar__link" %>
+    <%= link_to 'Assignments', assignments_path, class: "navbar__link" %>
+    <%= link_to 'Teammates', users_path, class: "navbar__link" %>
+    <%= link_to 'Log Out', '/logout', class: "navbar__link" %>
   </div>
   <!-- configuration for flash messages: -->
-    <div class="container">
+    <div>
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>

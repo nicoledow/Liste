@@ -36,13 +36,14 @@ class TasksController < ApplicationController
   end
 
   def create
+    #binding.pry
     @task = Task.new(task_params)
-    @list = @task.list
+    @list = List.find_by_id(task_params[:list_id])
     if @task.save
       redirect_to list_tasks_path(@list)
     else
       flash[:error] = "An error occurred. Please try again."
-      redirect_to list_tasks_path
+      redirect_to list_tasks_path(@list)
     end
   end
 
@@ -86,6 +87,6 @@ class TasksController < ApplicationController
 
   private
   def task_params
-    params.permit(:description, :list_id)
+    params.require(:task).permit(:description, :list_id)
   end
 end
