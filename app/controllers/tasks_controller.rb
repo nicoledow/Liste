@@ -36,7 +36,6 @@ class TasksController < ApplicationController
   end
 
   def create
-    #binding.pry
     @task = Task.new(task_params)
     @list = List.find_by_id(task_params[:list_id])
     if @task.save
