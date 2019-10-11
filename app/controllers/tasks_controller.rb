@@ -48,6 +48,11 @@ class TasksController < ApplicationController
     @tasks = Task.find_by(list_id: params[:list_id]).completed
   end
 
+  def edit
+    @assignment = Assignment.find_by(task_id: params[:id])
+    @users = User.all
+  end
+
   def update
     @task = Task.find_by_id(params[:id])
     @task.update(completed: true)

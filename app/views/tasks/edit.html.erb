@@ -1,0 +1,14 @@
+<h1> Edit Task </h1>
+
+<%= form_for @task do |f| %>
+  <%= f.text_field :description %>
+  <%= f.hidden_field :list_id, :value => @task.list_id %>
+  <%= f.submit %>
+<% end %>
+
+<%= form_for @assignment do |f| %>
+  <%= f.hidden_field :task_id, :value => @task.id %>
+  <%= f.collection_select(:user_id, @users, :id, :name)%> 
+  <%= f.text_field :due_date %>
+  <%= f.submit %>
+<% end %>
