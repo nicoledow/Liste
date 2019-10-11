@@ -1,11 +1,25 @@
-<% if @user_restricted %>
-<h1> <%= @user.name%>'s Assignments: </h1>
-<% else %>
-<h1> Your Team's Assignments: </h1>
-<% end %>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-1 col-md-10 col-sm-1 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h1 class="card-title text-center">Your Teammates</h1>
+            <h3 class="card-title text-center"> Click to see what they're working on: </h3>
+          </div>
+          <div class="text-center">
+            <% if @user_restricted %>
+              <h1> <%= @user.name%>'s Assignments: </h1>
+            <% else %>
+              <h1> Your Team's Assignments: </h1>
+            <% end %>
 
-<ul>
-  <% @assignments.each do |assignment| %>
-    <li> <%= link_to assignment.task.description, task_path(assignment.task) %> -  <%= assignment.user.name %> (<%= assignment.task.list.title%>)</li>
-  <% end %>
-</ul>
+            <ul>
+              <% @assignments.each do |assignment| %>
+                <li> <%= link_to assignment.task.description, task_path(assignment.task) %> -  <%= assignment.user.name %> (<%= assignment.task.list.title%>)</li>
+              <% end %>
+            </ul>
+          </div>  
+        <br>
+        </div>
+    </div>
+</div>
