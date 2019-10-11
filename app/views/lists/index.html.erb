@@ -10,7 +10,7 @@
             <%= f.text_field :title %>
             <%= f.submit class: "btn btn-dark" %>
           <% end %>
-
+          <br>
           <ul>
             <% @lists.each do |list| %>
               <li> <%= link_to list.title, list_path(list) %> <button class="btn btn-dark"><%= link_to 'See Tasks', list_tasks_path(list) %> </button>
