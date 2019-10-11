@@ -1,38 +1,3 @@
-<!--
-<h1> My Tasks </h1>
-
-<h2> To do: </h2>
-
-<ul>
-  <% @my_tasks.each do |assignment| %>
-    <% if !assignment.task.completed %>
-      <li> 
-        <%= link_to assignment.task.description, task_path(assignment.task) %> - due <%= assignment.due_date %> 
-        <!-- button to mark task complete: -->
-        <button class="btn btn-success"> <%= link_to "Done", task_path(assignment.task), :method => :patch %> </button>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
-
-<!--
-<h2> Done: </h2>
-
-<ul>
-  <% @my_tasks.each do |assignment| %>
-    <% if assignment.task.completed %>
-      <li> <%= link_to assignment.task.description, task_path(assignment.task) %> 
-        <% if assignment.task.completed_at != nil %>
-          <p> - Completed at: <%= assignment.task.completed_at %> </p>
-        <% end %>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
--->
-
-
-
 <div class="container">
     <div class="row">
       <div class="col-sm-1 col-md-10 col-sm-1 mx-auto">
