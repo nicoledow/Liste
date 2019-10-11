@@ -1,40 +1,53 @@
-<h2> Task: </h2> <%= @task.description %>
-<% if @task.completed_at != nil %>
-  <p> Completed at: <%= @task.completed_at %> </p>
-<% end %>
-<h3> Project: </h3> <%= @task.list.title %>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h1 class="card-title text-center"><%= @task.description%></h1>
+          </div>
+          <div class="text-center">
+            <% if @task.completed_at != nil %>
+              <p> Completed at: <%= @task.completed_at %> </p>
+            <% end %>
+           <h3> Project: </h3> <%= @task.list.title %>
 
-<% if @task.assigned? %>
-  <h4> Assigned to: </h4> <%= @person.name %>
-<% elsif !@task.assigned? && @current_user && @current_user.manager? %>
-  <h4> Assign to: </h4>
-  <%= form_for @assignment do |f| %>
-    <%= f.collection_select(:user_id, @users, :id, :name)%> <br>
-    <%= f.text_field :due_date, value: "Due date"%> <br>
-    <%= f.hidden_field :task_id, value: @task.id %>
-    <%= f.submit "Assign Task", class: "btn btn-primary" %>
-    <% end %>
-<% end %>
+           <% if @task.assigned? %>
+             <h4> Assigned to: </h4> <%= @person.name %>
+           <% elsif !@task.assigned? && @current_user && @current_user.manager? %>
+             <h4> Assign to: </h4>
 
-<!-- edit button: -->
-<button class="btn btn-secondary"> <%= link_to 'Edit', edit_task_path(@task) %>  </button>
+             <%= form_for @assignment do |f| %>
+               <%= f.collection_select(:user_id, @users, :id, :name)%> <br>
+               <%= f.text_field :due_date, value: "Due date"%> <br>
+               <%= f.hidden_field :task_id, value: @task.id %>
+               <%= f.submit "Assign Task", class: "btn btn-primary" %>
+             <% end %>
+            <% end %>
 
-<!-- if user is manager or owns the task, button to mark it complete: -->
-<% if @current_user %>
-  <% if @current_user.manager? || @task.is_assigned_to?(@current_user) %>
-  <button class="btn btn-success"> <%= link_to 'Done', task_complete_path(@task), method: :post %> </button>
-  <% end %>
-<% end %>
+          <!-- edit button: -->
+          <button class="btn btn-secondary"> <%= link_to 'Edit', edit_task_path(@task) %>  </button>
 
-<h3> Notes: </h3>
-<%= form_for @new_note do |f| %>
-  <%= f.hidden_field :task_id, value: @task.id %>
-  <%= f.text_field :content %>
-  <%= f.submit "Add Note", class: "btn btn-secondary"%>
-<% end %>
+          <!-- if user is manager or owns the task, button to mark it complete: -->
+          <% if @current_user %>
+            <% if @current_user.manager? || @task.is_assigned_to?(@current_user) %>
+              <button class="btn btn-success"> <%= link_to 'Done', task_complete_path(@task), method: :post %> </button>
+            <% end %>
+          <% end %>
 
-<ul>
-  <% @task.notes.each do |note| %>
-    <li> <strong><%= note.user.name %>:</strong> <%= note.content %> </li>
-  <% end %>
-</ul>
+          <h3> Notes: </h3>
+          <%= form_for @new_note do |f| %>
+            <%= f.hidden_field :task_id, value: @task.id %>
+            <%= f.text_field :content %>
+            <%= f.submit "Add Note", class: "btn btn-secondary"%>
+          <% end %>
+
+          <ul>
+            <% @task.notes.each do |note| %>
+              <li> <strong><%= note.user.name %>:</strong> <%= note.content %> </li>
+            <% end %>
+          </ul>
+          </div>
+        <br>
+        </div>
+    </div>
+</div>
