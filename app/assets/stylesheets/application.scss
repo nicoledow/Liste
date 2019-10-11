@@ -36,13 +36,14 @@ $font-2: font-family: 'Josefin Slab', serif; */
     font-family: 'Amatic SC', cursive;
  }
 
- li {
-     color: $color-5;
- }
 
  button {
      padding: 5px;
      margin: 5px;
+ }
+
+ .btn {
+     color: white;
  }
   
  .navbar {
