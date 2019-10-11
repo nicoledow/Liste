@@ -1,3 +1,4 @@
+<!--
 <% if @list %>
   <h1> <%= @list.title %>
   <% if @current_user.manager? %>
@@ -6,8 +7,8 @@
 <% else %>
   <h1> Current tasks: </h1>
 <% end %>
-
-
+-->
+<!--
 <%= form_for @task do |f| %>
   <%= f.text_field :description %> <br>
   
@@ -20,13 +21,13 @@
 
   <%= f.submit "Add Task", class: "btn btn-primary"%>
 <% end %>
-
+-->
+<!--
 <ul>
   <% @tasks.each do |task| %>
     <li>
       <%= link_to task.description, task_path(task) %>
 
-<!-- if user is a manager, they can assign the task to another user: -->
       <% if current_user.manager? %>
         <% if !task.assigned? %>
           <%= form_for @assignment do |f| %>
@@ -36,11 +37,14 @@
             <%= f.submit "Assign Task", class: "btn btn-secondary" %>
           <% end %>
         <% end %>
+-->
 <!-- if current user is manager, they can delete the task -->
+<!--
           <button class="btn btn-danger"> <%= link_to "Delete Task", task_path(task), :method => :delete %> </button>
       <% end %>
       
   <!-- if the current user is assigned this task, or if they are a manager, they can mark it complete -->
+  <!--
   <% if @current_user.manager? || task.is_assigned_to?(@current_user) %>
     <button class="btn btn-success"> <%= link_to 'Done', task_complete_path(task), method: :post %> </button>
   <% end %>
@@ -57,3 +61,112 @@
   <% end %>
 </ul>
 <% end %>
+-->
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm-1 col-md-10 col-sm-1 mx-auto text-center">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <% if @list %>
+              <h1> <%= @list.title %>
+              <% if @current_user.manager? %>
+                <button class="btn btn-success"> <%= link_to 'Project Finished', list_complete_path(@list), method: :post %> </button>
+              <% end %>
+            <% else %>
+              <h1> Current tasks: </h1>
+            <% end %>
+          </div>
+          <div class="text-center">
+          <%= form_for @task do |f| %>
+            <%= f.text_field :description %> <br>
+  
+            <% if @list %>
+              <%= f.hidden_field :list_id, value: @list.id%>
+            <% else %>
+              <%= f.label :list_id %>
+            <%= f.collection_select(:list_id, @lists, :id, :title) %> <br>
+            <% end %>
+
+            <%= f.submit "Add Task", class: "btn btn-primary"%>
+          <% end %>
+
+          </div>
+          <br>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm-1 col-md-10 col-sm-1 mx-auto text-center">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h1 class="card-title text-center">Current tasks:</h1>
+          </div>
+          <div class="text-center">
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <%= link_to task.description, task_path(task) %>
+
+      <% if current_user.manager? %>
+        <% if !task.assigned? %>
+          <%= form_for @assignment do |f| %>
+            <%= f.collection_select(:user_id, @users, :id, :name)%>
+            <%= f.text_field :due_date, value: "Due date"%>
+            <%= f.hidden_field :task_id, value: task.id %>
+            <%= f.submit "Assign Task", class: "btn btn-secondary" %>
+          <% end %>
+        <% end %>
+        <!-- if current user is manager, they can delete the task -->
+          <button class="btn btn-danger"> <%= link_to "Delete Task", task_path(task), :method => :delete %> </button>
+      <% end %>
+      
+  <!-- if the current user is assigned this task, or if they are a manager, they can mark it complete -->
+     <% if @current_user.manager? || task.is_assigned_to?(@current_user) %>
+       <button class="btn btn-success"> <%= link_to 'Done', task_complete_path(task), method: :post %> </button>
+     <% end %>
+      
+    </li>
+    <% end %>
+</ul>
+          </div>
+         <br>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm-1 col-md-10 col-sm-1 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h1 class="card-title text-center">Completed tasks:</h1>
+          </div>
+        
+        <div class="text-center">
+          <% if params[:list_id] %>
+            <h2> Completed Tasks: </h2>
+            <ul>
+              <% @completed_list_tasks.each do |task| %>
+               <li> <%= task.description%> - Completed on <%= task.updated_at %> </li>
+              <% end %>
+            </ul>
+          <% end %>
+
+        </div>   
+        <br>
+        </div>
+    </div>
+</div>
+
+
