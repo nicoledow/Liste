@@ -31,6 +31,23 @@
               <%= f.text_field :description %>
               <%= f.submit class: "btn btn-primary"%>
             <% end %>
+
+            <h2 class="text-center">Tasks: </h2>
+            <% if @list.tasks %>
+              <ul>
+              <% @list.tasks.each do |task|%>
+                <li> <%= task.description %> 
+                <% if task.assigned? %>
+                  - assigned to: 
+                  <% task.assignments.each do |assignment| %>
+                    <%= assignment.user.name %>
+                    (due <%= assignment.due_date %>)
+                  <% end %>
+                <% end %>
+                </li>
+              <% end %>
+              </ul>
+            <% end %>
           </div>
           <br>
         </div>
