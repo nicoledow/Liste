@@ -23,6 +23,7 @@ class TasksController < ApplicationController
     @new_task = Task.new
     @users = User.all
     @assignment = Assignment.new
+    @assignees = Assignment.all.select {|a| a.task_id == @task.id}
     @new_note = Note.new
     if @task.assigned?
       assignment = Assignment.find_by(task_id: @task.id)
