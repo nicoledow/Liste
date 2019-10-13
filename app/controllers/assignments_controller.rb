@@ -1,5 +1,4 @@
 class AssignmentsController < ApplicationController
-  before_action :require_login 
   
   def index
       @user = User.find_by_id(params[:user_id])

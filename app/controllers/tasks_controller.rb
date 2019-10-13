@@ -1,5 +1,4 @@
 class TasksController < ApplicationController
-  before_action :require_login 
   before_action :find_task
   skip_before_action :find_task, only: [:index, :new, :create]
   
