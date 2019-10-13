@@ -38,17 +38,14 @@ $font-2: font-family: 'Josefin Slab', serif; */
  }
 
 
- button {
-     padding: 5px;
-     margin: 5px;
- }
-
  ul {
      list-style-type: none;
  }
 
- .btn {
+ .btn, .btn a {
      color: white;
+     padding: 5px;
+     margin: 5px;
  }
   
  .navbar {
