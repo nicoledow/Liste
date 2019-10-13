@@ -18,6 +18,9 @@ class AssignmentsController < ApplicationController
     assignment = Assignment.new(assignment_params)
     if assignment.save
       redirect_to list_tasks_path(assignment.task.list)
+    else
+      flash[:error] = "An error occurred. Please try again."
+      redirect_to list_tasks_path(assignment.task.list)
     end
   end
 
