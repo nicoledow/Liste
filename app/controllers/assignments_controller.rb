@@ -2,14 +2,8 @@ class AssignmentsController < ApplicationController
   before_action :require_login 
   
   def index
-    if params[:user_id]
-      @user_restricted = true
       @user = User.find_by_id(params[:user_id])
       @assignments = Assignment.all.select {|a| a.user_id == @user.id}
-    else
-      @user_restricted = false
-      @assignments = Assignment.all
-    end
   end
 
   def show

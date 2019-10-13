@@ -5,11 +5,8 @@
           <div class="card-body">
           </div>
           <div class="text-center">
-            <% if @user_restricted %>
+
               <h1> <%= @user.name%>'s Assignments: </h1>
-            <% else %>
-              <h1> Your Team's Assignments: </h1>
-            <% end %>
 
             <ul>
               <% @assignments.each do |assignment| %>
