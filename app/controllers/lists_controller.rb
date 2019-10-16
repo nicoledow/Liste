@@ -5,8 +5,8 @@ class ListsController < ApplicationController
   end
   
   def index
-    @lists = List.incomplete.order("created_at DESC").all
-    @completed_lists = List.completed.order("created_at DESC").all
+    @lists = List.incomplete
+    @completed_lists = List.completed
     @new_list = List.new
     @current_user = current_user
   end

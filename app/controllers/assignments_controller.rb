@@ -2,7 +2,7 @@ class AssignmentsController < ApplicationController
   
   def index
       @user = User.find_by_id(params[:user_id])
-      @assignments = Assignment.all.select {|a| a.user_id == @user.id}
+      @assignments = @user.assignments
   end
 
   def show

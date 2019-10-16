@@ -4,12 +4,12 @@ class TasksController < ApplicationController
   
   def index
     if params[:list_id]
-      @tasks = List.find(params[:list_id]).tasks.incomplete.order("created_at DESC").all
+      @tasks = List.find(params[:list_id]).tasks.incomplete
       @list = List.find(params[:list_id])
     else
       @tasks = Task.incomplete
     end
-    @completed_list_tasks = List.find(params[:list_id]).tasks.completed.order("created_at DESC").all
+    @completed_list_tasks = List.find(params[:list_id]).tasks.completed
     @task = Task.new
     @lists = List.all
     @assignment = Assignment.new

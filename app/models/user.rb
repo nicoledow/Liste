@@ -15,9 +15,9 @@ class User < ApplicationRecord
     end
 
     def self.create_with_omniauth(auth)
-      user = User.find_or_create_by(uid: auth['uid'])
+      user = User.find_or_create_by(email: auth['info']['email'])
       user.email = auth['info']['email']
-      user.password = auth['uid']
+      user.password = SecureRandom.hex(16)
       user.name = auth['info']['name']
       if User.exists?(user.id)
         user
@@ -25,5 +25,10 @@ class User < ApplicationRecord
         user.save!
         user
       end
+    end
+
+    def uid
+      super
+      binding.pry
     end
 end

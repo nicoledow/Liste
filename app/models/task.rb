@@ -2,6 +2,9 @@ class Task < ApplicationRecord
     has_many :assignments
     belongs_to :list
     has_many :notes
+    has_many :users, through: :assignments
+
+   default_scope {order("created_at DESC")}
 
     scope :completed, -> { where(completed: true) }
     scope :incomplete, -> { where(completed: false) }
