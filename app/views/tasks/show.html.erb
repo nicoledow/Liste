@@ -14,7 +14,7 @@
            <% if @task.assigned? %>
              <h4> Assigned to: </h4> 
                <% @assignees.each do |a| %> 
-                 <%= a.user.name %> <br>
+                 <%= a.name %> <br>
                <% end %> 
                <br>
            <% end %>
