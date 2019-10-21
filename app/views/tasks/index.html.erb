@@ -78,12 +78,11 @@
       <div class="col-sm-1 col-md-10 col-sm-1 mx-auto">
         <div class="card card-signin my-5">
           <div class="card-body">
-            <h1 class="card-title text-center">Completed tasks:</h1>
           </div>
         
         <div class="text-center">
           <% if params[:list_id] %>
-            <h2> Completed Tasks: </h2>
+            <h1> Completed Tasks: </h1>
             <ul>
               <% @completed_list_tasks.each do |task| %>
                <li> <%= task.description%> - Completed on <%= task.updated_at %> </li>

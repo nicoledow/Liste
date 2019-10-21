@@ -11,7 +11,7 @@
             <ul>
               <% @assignments.each do |assignment| %>
                 <li>
-                  <%= assignment.task.description %>
+                  <%= assignment.task.description %> 
                   -  <%= assignment.user.name %> (<%= assignment.task.list.title%>)
                   </li>
               <% end %>
