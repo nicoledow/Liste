@@ -4,4 +4,11 @@ class Assignment < ApplicationRecord
 
     validates_uniqueness_of :user_id, scope: %i[task_id]
     default_scope {order("created_at DESC")}
+
+    def verify_task
+      if !self.task 
+        new_task = Task.create(description:"Please add a task")
+        self.task = new_task
+      end
+    end
 end
