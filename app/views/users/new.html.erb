@@ -1,5 +1,7 @@
-<h1> Liste </h1>
-<h2> Sign up: </h2>
+<div class="sign-up-headers">
+  <h1> Liste </h1>
+  <h2> Sign up: </h2>
+</div>
 
 <% if @user.errors.any? %>
   <div class="error-explanations">
@@ -11,22 +13,21 @@
   </div>
 <% end %>
 
+<div class="sign-up">
 <%= form_for @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %> <br>
+  <%= f.text_field :name, placeholder: "Name" %> <br>
 
-  <%= f.label :email %>
-  <%= f.text_field :email %> <br>
+  <%= f.text_field :email, placeholder: "Email" %> <br>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %> <br>
+  <%= f.password_field :password, placeholder: "Password" %> <br>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %> <br>
+  <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %> <br>
 
   <%= f.label :manager %>
   <%= f.check_box :manager %> <br>
 
   <%= f.submit 'Sign Up', class: "btn btn-primary"%>
 <% end %>
+
+</div>
 

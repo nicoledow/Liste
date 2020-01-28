@@ -17,7 +17,7 @@ class User < ApplicationRecord
     def self.create_with_omniauth(auth)
       user = User.find_or_create_by(email: auth['info']['email'])
       user.email = auth['info']['email']
-      user.password = SecureRandom.hex(16)
+      #user.password = SecureRandom.hex(16)
       user.name = auth['info']['name']
       if User.exists?(user.id)
         user

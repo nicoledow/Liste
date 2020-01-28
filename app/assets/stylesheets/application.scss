@@ -21,7 +21,6 @@ $font-2: font-family: 'Josefin Slab', serif; */
  }
 
  body {
-     background: $color-1;
      font-family: 'Advent Pro';font-size: 22px;
  }
 
@@ -40,6 +39,8 @@ $font-2: font-family: 'Josefin Slab', serif; */
 
  ul {
      list-style-type: none;
+
+     animation: moveInBottom 1s ease-out;
  }
 
  .btn, .btn a {
@@ -60,6 +61,69 @@ $font-2: font-family: 'Josefin Slab', serif; */
     text-decoration: none;
  }
 
+.sign-up {
+    position: relative; //this
+}
  
+.new_user,
+.sign-up-headers {
+    text-align: center;
+}
+
+input {
+    margin: 1rem;
+}
+
+@keyframes moveInBottom {
+    0%{
+        opacity: 0;
+        transform: translateY(-10rem);
+      }
+      100%{
+        opacity: 1;
+        transform: translate(0);
+      }
+}
+
+@keyframes moveInRight {
+    0%{
+      opacity: 0;
+      transform: translateX(-10rem);
+    }
+    80%{
+      transform: translateX(-1rem);
+    }
+    100%{
+      opacity: 1;
+      transform: translate(0);
+    }
+}
+
+@keyframes moveInLeft {
+    0%{
+      opacity: 0;
+      transform: translateX(10rem);
+    }
+    80%{
+      transform: translateX(1rem);
+    }
+    100%{
+      opacity: 1;
+      transform: translate(0);
+    }
+}
+
+@keyframes moveInTop {
+    0%{
+        opacity: 0;
+        transform: translateY(10rem);
+      }
+      100%{
+        opacity: 1;
+        transform: translate(0);
+      }
+}
+ 
+
 
  
