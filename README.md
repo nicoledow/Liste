@@ -1,7 +1,7 @@
 # README
 
 ## About Liste
-Liste is a web-based task and project managing application ideal for small teams with many items to accomplish. Upon sign up, users can register as either a manager or regular teammate. Teammates are able to see all lists (also called projects), tasks, and assignments. Managers have all the same functionality, but also have the ability to assign tasks and due dates to specific teammates. 
+Liste is a web-based task and project managing application ideal for small teams with many items to accomplish. Upon sign up, users can register as either a manager or regular teammate. Teammates are able to see all lists (also called projects), tasks, and assignments. Managers have all the same functionality, but also have the ability to assign tasks and due dates to specific teammates. You can see this app live at: https://morning-refuge-29534.herokuapp.com/. 
 
 ## Dependencies
 Liste requires the omniauth-facebook and bcrypt gems to facilitate secure login. It is recommended that the latest versions are used to ensure user data is secure.
